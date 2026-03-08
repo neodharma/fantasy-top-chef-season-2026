@@ -17,13 +17,11 @@ export function ChefItem({ chef, rank, onRemove }: ChefItemProps) {
     listeners,
     setNodeRef,
     transform,
-    transition,
     isDragging,
   } = useSortable({ id: chef.id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
-    transition,
   };
 
   const isTop3 = rank <= 3;
@@ -32,7 +30,7 @@ export function ChefItem({ chef, rank, onRemove }: ChefItemProps) {
     <div
       ref={setNodeRef}
       style={style}
-      className={`group flex items-center gap-3 rounded-lg border px-3 py-2.5 transition-all duration-200 ${
+      className={`group flex items-center gap-3 rounded-lg border px-3 py-2.5 ${
         isDragging
           ? "z-50 shadow-lg shadow-mustard/10 border-mustard/30 bg-card scale-[1.02]"
           : "bg-card/60 border-border/40 hover:border-border hover:bg-card hover:shadow-sm"

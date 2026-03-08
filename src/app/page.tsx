@@ -39,7 +39,11 @@ export default function Home() {
             Each team drafts <span className="font-semibold text-foreground">4 chefs</span>. Each chef can be picked by up to <span className="font-semibold text-foreground">3 teams</span>. Points are earned based on how your chefs perform each episode.
           </p>
 
-          <p className="mt-4 text-base text-muted-foreground leading-relaxed max-w-md mx-auto">
+          <p className="mt-4 text-base font-bold text-foreground max-w-md mx-auto">
+            Please submit by March 14th!
+          </p>
+
+          <p className="mt-3 text-base text-muted-foreground leading-relaxed max-w-md mx-auto">
             Enter your team name and your name, then pick chefs in order after watching Episode 1. Click to pick, drag to reorder. If you mess up, just resubmit and text Ben. The draft will be auto-completed next week and teams posted by March 15th.
           </p>
 

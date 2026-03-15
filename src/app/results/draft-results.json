@@ -1,0 +1,929 @@
+{
+  "draftOrder": [
+    {
+      "teamName": "Padma\u2019s Angels",
+      "ownerName": "Allison"
+    },
+    {
+      "teamName": "Vigilante Shrimp 2.0",
+      "ownerName": "Angela"
+    },
+    {
+      "teamName": "Knitting Grandmas",
+      "ownerName": "Karen"
+    },
+    {
+      "teamName": "Rising Phoenix",
+      "ownerName": "Lauren"
+    },
+    {
+      "teamName": "Tom's Nom's",
+      "ownerName": "Josh"
+    },
+    {
+      "teamName": "Risotto Roughnecks",
+      "ownerName": "Ben"
+    },
+    {
+      "teamName": "Just add acid",
+      "ownerName": "Aly"
+    },
+    {
+      "teamName": "Don\u2019t Risotto Me",
+      "ownerName": "Gary"
+    },
+    {
+      "teamName": "House Young",
+      "ownerName": "Shannon"
+    },
+    {
+      "teamName": "Best with Broth",
+      "ownerName": "Anna"
+    }
+  ],
+  "picks": [
+    {
+      "round_num": 1,
+      "pick_num": 1,
+      "team_name": "Padma\u2019s Angels",
+      "chef_id": "brandon-dearden",
+      "chef_name": "Brandon Dearden",
+      "rank_on_list": 1
+    },
+    {
+      "round_num": 1,
+      "pick_num": 2,
+      "team_name": "Vigilante Shrimp 2.0",
+      "chef_id": "anthony-jones",
+      "chef_name": "Anthony Jones",
+      "rank_on_list": 1
+    },
+    {
+      "round_num": 1,
+      "pick_num": 3,
+      "team_name": "Knitting Grandmas",
+      "chef_id": "rhoda-magbitang",
+      "chef_name": "Rhoda Magbitang",
+      "rank_on_list": 1
+    },
+    {
+      "round_num": 1,
+      "pick_num": 4,
+      "team_name": "Rising Phoenix",
+      "chef_id": "oscar-diaz",
+      "chef_name": "Oscar Diaz",
+      "rank_on_list": 1
+    },
+    {
+      "round_num": 1,
+      "pick_num": 5,
+      "team_name": "Tom's Nom's",
+      "chef_id": "anthony-jones",
+      "chef_name": "Anthony Jones",
+      "rank_on_list": 1
+    },
+    {
+      "round_num": 1,
+      "pick_num": 6,
+      "team_name": "Risotto Roughnecks",
+      "chef_id": "rhoda-magbitang",
+      "chef_name": "Rhoda Magbitang",
+      "rank_on_list": 1
+    },
+    {
+      "round_num": 1,
+      "pick_num": 7,
+      "team_name": "Just add acid",
+      "chef_id": "duyen-ha",
+      "chef_name": "Duyen Ha",
+      "rank_on_list": 1
+    },
+    {
+      "round_num": 1,
+      "pick_num": 8,
+      "team_name": "Don\u2019t Risotto Me",
+      "chef_id": "duyen-ha",
+      "chef_name": "Duyen Ha",
+      "rank_on_list": 1
+    },
+    {
+      "round_num": 1,
+      "pick_num": 9,
+      "team_name": "House Young",
+      "chef_id": "anthony-jones",
+      "chef_name": "Anthony Jones",
+      "rank_on_list": 1
+    },
+    {
+      "round_num": 1,
+      "pick_num": 10,
+      "team_name": "Best with Broth",
+      "chef_id": "rhoda-magbitang",
+      "chef_name": "Rhoda Magbitang",
+      "rank_on_list": 1
+    },
+    {
+      "round_num": 2,
+      "pick_num": 11,
+      "team_name": "Best with Broth",
+      "chef_id": "duyen-ha",
+      "chef_name": "Duyen Ha",
+      "rank_on_list": 2
+    },
+    {
+      "round_num": 2,
+      "pick_num": 12,
+      "team_name": "House Young",
+      "chef_id": "nana-araba-wilmot",
+      "chef_name": "Nana Araba Wilmot",
+      "rank_on_list": 4
+    },
+    {
+      "round_num": 2,
+      "pick_num": 13,
+      "team_name": "Don\u2019t Risotto Me",
+      "chef_id": "nana-araba-wilmot",
+      "chef_name": "Nana Araba Wilmot",
+      "rank_on_list": 4
+    },
+    {
+      "round_num": 2,
+      "pick_num": 14,
+      "team_name": "Just add acid",
+      "chef_id": "brandon-dearden",
+      "chef_name": "Brandon Dearden",
+      "rank_on_list": 4
+    },
+    {
+      "round_num": 2,
+      "pick_num": 15,
+      "team_name": "Risotto Roughnecks",
+      "chef_id": "sieger-bayer",
+      "chef_name": "Sieger Bayer",
+      "rank_on_list": 4
+    },
+    {
+      "round_num": 2,
+      "pick_num": 16,
+      "team_name": "Tom's Nom's",
+      "chef_id": "oscar-diaz",
+      "chef_name": "Oscar Diaz",
+      "rank_on_list": 2
+    },
+    {
+      "round_num": 2,
+      "pick_num": 17,
+      "team_name": "Rising Phoenix",
+      "chef_id": "brandon-dearden",
+      "chef_name": "Brandon Dearden",
+      "rank_on_list": 2
+    },
+    {
+      "round_num": 2,
+      "pick_num": 18,
+      "team_name": "Knitting Grandmas",
+      "chef_id": "brittany-cochran",
+      "chef_name": "Brittany Cochran",
+      "rank_on_list": 3
+    },
+    {
+      "round_num": 2,
+      "pick_num": 19,
+      "team_name": "Vigilante Shrimp 2.0",
+      "chef_id": "sherry-cardoso",
+      "chef_name": "Sherry Cardoso",
+      "rank_on_list": 2
+    },
+    {
+      "round_num": 2,
+      "pick_num": 20,
+      "team_name": "Padma\u2019s Angels",
+      "chef_id": "oscar-diaz",
+      "chef_name": "Oscar Diaz",
+      "rank_on_list": 4
+    },
+    {
+      "round_num": 3,
+      "pick_num": 21,
+      "team_name": "Padma\u2019s Angels",
+      "chef_id": "jonathan-dearden",
+      "chef_name": "Jonathan Dearden",
+      "rank_on_list": 5
+    },
+    {
+      "round_num": 3,
+      "pick_num": 22,
+      "team_name": "Vigilante Shrimp 2.0",
+      "chef_id": "jassi-bindra",
+      "chef_name": "Jassi Bindra",
+      "rank_on_list": 5
+    },
+    {
+      "round_num": 3,
+      "pick_num": 23,
+      "team_name": "Knitting Grandmas",
+      "chef_id": "nana-araba-wilmot",
+      "chef_name": "Nana Araba Wilmot",
+      "rank_on_list": 4
+    },
+    {
+      "round_num": 3,
+      "pick_num": 24,
+      "team_name": "Rising Phoenix",
+      "chef_id": "jassi-bindra",
+      "chef_name": "Jassi Bindra",
+      "rank_on_list": 3
+    },
+    {
+      "round_num": 3,
+      "pick_num": 25,
+      "team_name": "Tom's Nom's",
+      "chef_id": "sieger-bayer",
+      "chef_name": "Sieger Bayer",
+      "rank_on_list": 6
+    },
+    {
+      "round_num": 3,
+      "pick_num": 26,
+      "team_name": "Risotto Roughnecks",
+      "chef_id": "sherry-cardoso",
+      "chef_name": "Sherry Cardoso",
+      "rank_on_list": 5
+    },
+    {
+      "round_num": 3,
+      "pick_num": 27,
+      "team_name": "Just add acid",
+      "chef_id": "laurence-louie",
+      "chef_name": "Laurence Louie",
+      "rank_on_list": 5
+    },
+    {
+      "round_num": 3,
+      "pick_num": 28,
+      "team_name": "Don\u2019t Risotto Me",
+      "chef_id": "jassi-bindra",
+      "chef_name": "Jassi Bindra",
+      "rank_on_list": 6
+    },
+    {
+      "round_num": 3,
+      "pick_num": 29,
+      "team_name": "House Young",
+      "chef_id": "sherry-cardoso",
+      "chef_name": "Sherry Cardoso",
+      "rank_on_list": 5
+    },
+    {
+      "round_num": 3,
+      "pick_num": 30,
+      "team_name": "Best with Broth",
+      "chef_id": "jonathan-dearden",
+      "chef_name": "Jonathan Dearden",
+      "rank_on_list": 4
+    },
+    {
+      "round_num": 4,
+      "pick_num": 31,
+      "team_name": "Best with Broth",
+      "chef_id": "laurence-louie",
+      "chef_name": "Laurence Louie",
+      "rank_on_list": 5
+    },
+    {
+      "round_num": 4,
+      "pick_num": 32,
+      "team_name": "House Young",
+      "chef_id": "laurence-louie",
+      "chef_name": "Laurence Louie",
+      "rank_on_list": 6
+    },
+    {
+      "round_num": 4,
+      "pick_num": 33,
+      "team_name": "Don\u2019t Risotto Me",
+      "chef_id": "jonathan-dearden",
+      "chef_name": "Jonathan Dearden",
+      "rank_on_list": 7
+    },
+    {
+      "round_num": 4,
+      "pick_num": 34,
+      "team_name": "Just add acid",
+      "chef_id": "justin-tootla",
+      "chef_name": "Justin Tootla",
+      "rank_on_list": 8
+    },
+    {
+      "round_num": 4,
+      "pick_num": 35,
+      "team_name": "Risotto Roughnecks",
+      "chef_id": "jennifer-lee-jackson",
+      "chef_name": "Jennifer Lee Jackson",
+      "rank_on_list": 10
+    },
+    {
+      "round_num": 4,
+      "pick_num": 36,
+      "team_name": "Tom's Nom's",
+      "chef_id": "jennifer-lee-jackson",
+      "chef_name": "Jennifer Lee Jackson",
+      "rank_on_list": 11
+    },
+    {
+      "round_num": 4,
+      "pick_num": 37,
+      "team_name": "Rising Phoenix",
+      "chef_id": "sieger-bayer",
+      "chef_name": "Sieger Bayer",
+      "rank_on_list": 4
+    },
+    {
+      "round_num": 4,
+      "pick_num": 38,
+      "team_name": "Knitting Grandmas",
+      "chef_id": "jennifer-lee-jackson",
+      "chef_name": "Jennifer Lee Jackson",
+      "rank_on_list": 9
+    },
+    {
+      "round_num": 4,
+      "pick_num": 39,
+      "team_name": "Vigilante Shrimp 2.0",
+      "chef_id": "brittany-cochran",
+      "chef_name": "Brittany Cochran",
+      "rank_on_list": 11
+    },
+    {
+      "round_num": 4,
+      "pick_num": 40,
+      "team_name": "Padma\u2019s Angels",
+      "chef_id": "justin-tootla",
+      "chef_name": "Justin Tootla",
+      "rank_on_list": 10
+    }
+  ],
+  "rosters": [
+    {
+      "teamName": "Padma\u2019s Angels",
+      "ownerName": "Allison",
+      "picks": [
+        {
+          "round_num": 1,
+          "pick_num": 1,
+          "team_name": "Padma\u2019s Angels",
+          "chef_id": "brandon-dearden",
+          "chef_name": "Brandon Dearden",
+          "rank_on_list": 1
+        },
+        {
+          "round_num": 2,
+          "pick_num": 20,
+          "team_name": "Padma\u2019s Angels",
+          "chef_id": "oscar-diaz",
+          "chef_name": "Oscar Diaz",
+          "rank_on_list": 4
+        },
+        {
+          "round_num": 3,
+          "pick_num": 21,
+          "team_name": "Padma\u2019s Angels",
+          "chef_id": "jonathan-dearden",
+          "chef_name": "Jonathan Dearden",
+          "rank_on_list": 5
+        },
+        {
+          "round_num": 4,
+          "pick_num": 40,
+          "team_name": "Padma\u2019s Angels",
+          "chef_id": "justin-tootla",
+          "chef_name": "Justin Tootla",
+          "rank_on_list": 10
+        }
+      ],
+      "avgRank": 5.0
+    },
+    {
+      "teamName": "Vigilante Shrimp 2.0",
+      "ownerName": "Angela",
+      "picks": [
+        {
+          "round_num": 1,
+          "pick_num": 2,
+          "team_name": "Vigilante Shrimp 2.0",
+          "chef_id": "anthony-jones",
+          "chef_name": "Anthony Jones",
+          "rank_on_list": 1
+        },
+        {
+          "round_num": 2,
+          "pick_num": 19,
+          "team_name": "Vigilante Shrimp 2.0",
+          "chef_id": "sherry-cardoso",
+          "chef_name": "Sherry Cardoso",
+          "rank_on_list": 2
+        },
+        {
+          "round_num": 3,
+          "pick_num": 22,
+          "team_name": "Vigilante Shrimp 2.0",
+          "chef_id": "jassi-bindra",
+          "chef_name": "Jassi Bindra",
+          "rank_on_list": 5
+        },
+        {
+          "round_num": 4,
+          "pick_num": 39,
+          "team_name": "Vigilante Shrimp 2.0",
+          "chef_id": "brittany-cochran",
+          "chef_name": "Brittany Cochran",
+          "rank_on_list": 11
+        }
+      ],
+      "avgRank": 4.8
+    },
+    {
+      "teamName": "Knitting Grandmas",
+      "ownerName": "Karen",
+      "picks": [
+        {
+          "round_num": 1,
+          "pick_num": 3,
+          "team_name": "Knitting Grandmas",
+          "chef_id": "rhoda-magbitang",
+          "chef_name": "Rhoda Magbitang",
+          "rank_on_list": 1
+        },
+        {
+          "round_num": 2,
+          "pick_num": 18,
+          "team_name": "Knitting Grandmas",
+          "chef_id": "brittany-cochran",
+          "chef_name": "Brittany Cochran",
+          "rank_on_list": 3
+        },
+        {
+          "round_num": 3,
+          "pick_num": 23,
+          "team_name": "Knitting Grandmas",
+          "chef_id": "nana-araba-wilmot",
+          "chef_name": "Nana Araba Wilmot",
+          "rank_on_list": 4
+        },
+        {
+          "round_num": 4,
+          "pick_num": 38,
+          "team_name": "Knitting Grandmas",
+          "chef_id": "jennifer-lee-jackson",
+          "chef_name": "Jennifer Lee Jackson",
+          "rank_on_list": 9
+        }
+      ],
+      "avgRank": 4.2
+    },
+    {
+      "teamName": "Rising Phoenix",
+      "ownerName": "Lauren",
+      "picks": [
+        {
+          "round_num": 1,
+          "pick_num": 4,
+          "team_name": "Rising Phoenix",
+          "chef_id": "oscar-diaz",
+          "chef_name": "Oscar Diaz",
+          "rank_on_list": 1
+        },
+        {
+          "round_num": 2,
+          "pick_num": 17,
+          "team_name": "Rising Phoenix",
+          "chef_id": "brandon-dearden",
+          "chef_name": "Brandon Dearden",
+          "rank_on_list": 2
+        },
+        {
+          "round_num": 3,
+          "pick_num": 24,
+          "team_name": "Rising Phoenix",
+          "chef_id": "jassi-bindra",
+          "chef_name": "Jassi Bindra",
+          "rank_on_list": 3
+        },
+        {
+          "round_num": 4,
+          "pick_num": 37,
+          "team_name": "Rising Phoenix",
+          "chef_id": "sieger-bayer",
+          "chef_name": "Sieger Bayer",
+          "rank_on_list": 4
+        }
+      ],
+      "avgRank": 2.5
+    },
+    {
+      "teamName": "Tom's Nom's",
+      "ownerName": "Josh",
+      "picks": [
+        {
+          "round_num": 1,
+          "pick_num": 5,
+          "team_name": "Tom's Nom's",
+          "chef_id": "anthony-jones",
+          "chef_name": "Anthony Jones",
+          "rank_on_list": 1
+        },
+        {
+          "round_num": 2,
+          "pick_num": 16,
+          "team_name": "Tom's Nom's",
+          "chef_id": "oscar-diaz",
+          "chef_name": "Oscar Diaz",
+          "rank_on_list": 2
+        },
+        {
+          "round_num": 3,
+          "pick_num": 25,
+          "team_name": "Tom's Nom's",
+          "chef_id": "sieger-bayer",
+          "chef_name": "Sieger Bayer",
+          "rank_on_list": 6
+        },
+        {
+          "round_num": 4,
+          "pick_num": 36,
+          "team_name": "Tom's Nom's",
+          "chef_id": "jennifer-lee-jackson",
+          "chef_name": "Jennifer Lee Jackson",
+          "rank_on_list": 11
+        }
+      ],
+      "avgRank": 5.0
+    },
+    {
+      "teamName": "Risotto Roughnecks",
+      "ownerName": "Ben",
+      "picks": [
+        {
+          "round_num": 1,
+          "pick_num": 6,
+          "team_name": "Risotto Roughnecks",
+          "chef_id": "rhoda-magbitang",
+          "chef_name": "Rhoda Magbitang",
+          "rank_on_list": 1
+        },
+        {
+          "round_num": 2,
+          "pick_num": 15,
+          "team_name": "Risotto Roughnecks",
+          "chef_id": "sieger-bayer",
+          "chef_name": "Sieger Bayer",
+          "rank_on_list": 4
+        },
+        {
+          "round_num": 3,
+          "pick_num": 26,
+          "team_name": "Risotto Roughnecks",
+          "chef_id": "sherry-cardoso",
+          "chef_name": "Sherry Cardoso",
+          "rank_on_list": 5
+        },
+        {
+          "round_num": 4,
+          "pick_num": 35,
+          "team_name": "Risotto Roughnecks",
+          "chef_id": "jennifer-lee-jackson",
+          "chef_name": "Jennifer Lee Jackson",
+          "rank_on_list": 10
+        }
+      ],
+      "avgRank": 5.0
+    },
+    {
+      "teamName": "Just add acid",
+      "ownerName": "Aly",
+      "picks": [
+        {
+          "round_num": 1,
+          "pick_num": 7,
+          "team_name": "Just add acid",
+          "chef_id": "duyen-ha",
+          "chef_name": "Duyen Ha",
+          "rank_on_list": 1
+        },
+        {
+          "round_num": 2,
+          "pick_num": 14,
+          "team_name": "Just add acid",
+          "chef_id": "brandon-dearden",
+          "chef_name": "Brandon Dearden",
+          "rank_on_list": 4
+        },
+        {
+          "round_num": 3,
+          "pick_num": 27,
+          "team_name": "Just add acid",
+          "chef_id": "laurence-louie",
+          "chef_name": "Laurence Louie",
+          "rank_on_list": 5
+        },
+        {
+          "round_num": 4,
+          "pick_num": 34,
+          "team_name": "Just add acid",
+          "chef_id": "justin-tootla",
+          "chef_name": "Justin Tootla",
+          "rank_on_list": 8
+        }
+      ],
+      "avgRank": 4.5
+    },
+    {
+      "teamName": "Don\u2019t Risotto Me",
+      "ownerName": "Gary",
+      "picks": [
+        {
+          "round_num": 1,
+          "pick_num": 8,
+          "team_name": "Don\u2019t Risotto Me",
+          "chef_id": "duyen-ha",
+          "chef_name": "Duyen Ha",
+          "rank_on_list": 1
+        },
+        {
+          "round_num": 2,
+          "pick_num": 13,
+          "team_name": "Don\u2019t Risotto Me",
+          "chef_id": "nana-araba-wilmot",
+          "chef_name": "Nana Araba Wilmot",
+          "rank_on_list": 4
+        },
+        {
+          "round_num": 3,
+          "pick_num": 28,
+          "team_name": "Don\u2019t Risotto Me",
+          "chef_id": "jassi-bindra",
+          "chef_name": "Jassi Bindra",
+          "rank_on_list": 6
+        },
+        {
+          "round_num": 4,
+          "pick_num": 33,
+          "team_name": "Don\u2019t Risotto Me",
+          "chef_id": "jonathan-dearden",
+          "chef_name": "Jonathan Dearden",
+          "rank_on_list": 7
+        }
+      ],
+      "avgRank": 4.5
+    },
+    {
+      "teamName": "House Young",
+      "ownerName": "Shannon",
+      "picks": [
+        {
+          "round_num": 1,
+          "pick_num": 9,
+          "team_name": "House Young",
+          "chef_id": "anthony-jones",
+          "chef_name": "Anthony Jones",
+          "rank_on_list": 1
+        },
+        {
+          "round_num": 2,
+          "pick_num": 12,
+          "team_name": "House Young",
+          "chef_id": "nana-araba-wilmot",
+          "chef_name": "Nana Araba Wilmot",
+          "rank_on_list": 4
+        },
+        {
+          "round_num": 3,
+          "pick_num": 29,
+          "team_name": "House Young",
+          "chef_id": "sherry-cardoso",
+          "chef_name": "Sherry Cardoso",
+          "rank_on_list": 5
+        },
+        {
+          "round_num": 4,
+          "pick_num": 32,
+          "team_name": "House Young",
+          "chef_id": "laurence-louie",
+          "chef_name": "Laurence Louie",
+          "rank_on_list": 6
+        }
+      ],
+      "avgRank": 4.0
+    },
+    {
+      "teamName": "Best with Broth",
+      "ownerName": "Anna",
+      "picks": [
+        {
+          "round_num": 1,
+          "pick_num": 10,
+          "team_name": "Best with Broth",
+          "chef_id": "rhoda-magbitang",
+          "chef_name": "Rhoda Magbitang",
+          "rank_on_list": 1
+        },
+        {
+          "round_num": 2,
+          "pick_num": 11,
+          "team_name": "Best with Broth",
+          "chef_id": "duyen-ha",
+          "chef_name": "Duyen Ha",
+          "rank_on_list": 2
+        },
+        {
+          "round_num": 3,
+          "pick_num": 30,
+          "team_name": "Best with Broth",
+          "chef_id": "jonathan-dearden",
+          "chef_name": "Jonathan Dearden",
+          "rank_on_list": 4
+        },
+        {
+          "round_num": 4,
+          "pick_num": 31,
+          "team_name": "Best with Broth",
+          "chef_id": "laurence-louie",
+          "chef_name": "Laurence Louie",
+          "rank_on_list": 5
+        }
+      ],
+      "avgRank": 3.0
+    }
+  ],
+  "chefAvgRank": [
+    {
+      "chefId": "duyen-ha",
+      "chefName": "Duyen Ha",
+      "avgRank": 3.0,
+      "numTeams": 10
+    },
+    {
+      "chefId": "rhoda-magbitang",
+      "chefName": "Rhoda Magbitang",
+      "avgRank": 3.7,
+      "numTeams": 10
+    },
+    {
+      "chefId": "anthony-jones",
+      "chefName": "Anthony Jones",
+      "avgRank": 3.8,
+      "numTeams": 10
+    },
+    {
+      "chefId": "brandon-dearden",
+      "chefName": "Brandon Dearden",
+      "avgRank": 5.7,
+      "numTeams": 10
+    },
+    {
+      "chefId": "oscar-diaz",
+      "chefName": "Oscar Diaz",
+      "avgRank": 6.0,
+      "numTeams": 10
+    },
+    {
+      "chefId": "jonathan-dearden",
+      "chefName": "Jonathan Dearden",
+      "avgRank": 7.4,
+      "numTeams": 10
+    },
+    {
+      "chefId": "nana-araba-wilmot",
+      "chefName": "Nana Araba Wilmot",
+      "avgRank": 7.5,
+      "numTeams": 10
+    },
+    {
+      "chefId": "laurence-louie",
+      "chefName": "Laurence Louie",
+      "avgRank": 7.7,
+      "numTeams": 10
+    },
+    {
+      "chefId": "sherry-cardoso",
+      "chefName": "Sherry Cardoso",
+      "avgRank": 8.0,
+      "numTeams": 10
+    },
+    {
+      "chefId": "jassi-bindra",
+      "chefName": "Jassi Bindra",
+      "avgRank": 8.9,
+      "numTeams": 10
+    },
+    {
+      "chefId": "sieger-bayer",
+      "chefName": "Sieger Bayer",
+      "avgRank": 8.9,
+      "numTeams": 10
+    },
+    {
+      "chefId": "jennifer-lee-jackson",
+      "chefName": "Jennifer Lee Jackson",
+      "avgRank": 10.5,
+      "numTeams": 10
+    },
+    {
+      "chefId": "brittany-cochran",
+      "chefName": "Brittany Cochran",
+      "avgRank": 11.7,
+      "numTeams": 10
+    },
+    {
+      "chefId": "justin-tootla",
+      "chefName": "Justin Tootla",
+      "avgRank": 12.2,
+      "numTeams": 10
+    },
+    {
+      "chefId": "day-anais-joseph",
+      "chefName": "Day Anais Joseph",
+      "avgRank": 15.0,
+      "numTeams": 10
+    }
+  ],
+  "chefPopularity": [
+    {
+      "chefId": "brandon-dearden",
+      "chefName": "Brandon Dearden",
+      "count": 3
+    },
+    {
+      "chefId": "anthony-jones",
+      "chefName": "Anthony Jones",
+      "count": 3
+    },
+    {
+      "chefId": "rhoda-magbitang",
+      "chefName": "Rhoda Magbitang",
+      "count": 3
+    },
+    {
+      "chefId": "oscar-diaz",
+      "chefName": "Oscar Diaz",
+      "count": 3
+    },
+    {
+      "chefId": "duyen-ha",
+      "chefName": "Duyen Ha",
+      "count": 3
+    },
+    {
+      "chefId": "nana-araba-wilmot",
+      "chefName": "Nana Araba Wilmot",
+      "count": 3
+    },
+    {
+      "chefId": "sieger-bayer",
+      "chefName": "Sieger Bayer",
+      "count": 3
+    },
+    {
+      "chefId": "sherry-cardoso",
+      "chefName": "Sherry Cardoso",
+      "count": 3
+    },
+    {
+      "chefId": "jonathan-dearden",
+      "chefName": "Jonathan Dearden",
+      "count": 3
+    },
+    {
+      "chefId": "jassi-bindra",
+      "chefName": "Jassi Bindra",
+      "count": 3
+    },
+    {
+      "chefId": "laurence-louie",
+      "chefName": "Laurence Louie",
+      "count": 3
+    },
+    {
+      "chefId": "jennifer-lee-jackson",
+      "chefName": "Jennifer Lee Jackson",
+      "count": 3
+    },
+    {
+      "chefId": "brittany-cochran",
+      "chefName": "Brittany Cochran",
+      "count": 2
+    },
+    {
+      "chefId": "justin-tootla",
+      "chefName": "Justin Tootla",
+      "count": 2
+    }
+  ],
+  "undrafted": [
+    {
+      "id": "day-anais-joseph",
+      "name": "Day Anais Joseph"
+    }
+  ],
+  "numTeams": 10
+}

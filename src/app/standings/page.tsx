@@ -22,6 +22,11 @@ const EVENT_LABELS: Record<string, string> = {
   lck_win: "LCK Win",
   sent_to_lck: "Sent to LCK",
   eliminated: "Eliminated",
+  bonus_risotto: "Risotto",
+  bonus_cries: "Cries",
+  bonus_incomplete_plate: "Incomplete Plate",
+  bonus_forgot_ingredient: "Forgot Ingredient",
+  bonus_liquid_nitrogen: "Liquid Nitrogen",
 };
 
 interface Roster {

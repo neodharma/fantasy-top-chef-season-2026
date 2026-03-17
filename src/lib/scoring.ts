@@ -7,7 +7,12 @@ export type EventType =
   | "elimination_bottom"
   | "lck_win"
   | "sent_to_lck"
-  | "eliminated";
+  | "eliminated"
+  | "bonus_risotto"
+  | "bonus_cries"
+  | "bonus_incomplete_plate"
+  | "bonus_forgot_ingredient"
+  | "bonus_liquid_nitrogen";
 
 export type ChefStatus = "Active" | "In LCK" | "Eliminated";
 
@@ -43,6 +48,11 @@ export const POINT_VALUES: Record<EventType, number> = {
   lck_win: 1,
   sent_to_lck: 0,
   eliminated: 0,
+  bonus_risotto: 0.5,
+  bonus_cries: 0.5,
+  bonus_incomplete_plate: 0.5,
+  bonus_forgot_ingredient: 0.5,
+  bonus_liquid_nitrogen: 0.5,
 };
 
 /** Main-competition events (i.e. not LCK-only or status-only) */

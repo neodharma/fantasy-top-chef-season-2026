@@ -28,6 +28,11 @@ const EVENT_LABELS: Record<EventType, string> = {
   lck_win: "LCK Win",
   sent_to_lck: "Sent to LCK",
   eliminated: "Eliminated",
+  bonus_risotto: "Risotto",
+  bonus_cries: "Cries",
+  bonus_incomplete_plate: "Incomplete Plate",
+  bonus_forgot_ingredient: "Forgot Ingredient",
+  bonus_liquid_nitrogen: "Liquid Nitrogen",
 };
 
 const EVENT_STYLES: Record<EventType, string> = {
@@ -40,6 +45,11 @@ const EVENT_STYLES: Record<EventType, string> = {
   lck_win: "bg-mustard-light/40 text-mustard-dark",
   sent_to_lck: "bg-orange-100 text-orange-800",
   eliminated: "bg-red-100 text-red-800",
+  bonus_risotto: "bg-purple-50 text-purple-700",
+  bonus_cries: "bg-purple-50 text-purple-700",
+  bonus_incomplete_plate: "bg-purple-50 text-purple-700",
+  bonus_forgot_ingredient: "bg-purple-50 text-purple-700",
+  bonus_liquid_nitrogen: "bg-purple-50 text-purple-700",
 };
 
 function EventBadge({ event }: { event: EventType }) {

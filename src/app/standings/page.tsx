@@ -209,16 +209,16 @@ export default async function StandingsPage() {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-border/50 bg-muted/30">
-                <th className="py-2 pl-4 pr-2 text-left font-semibold text-muted-foreground w-10">
+                <th className="py-2 px-2 text-center font-semibold text-muted-foreground w-10">
                   #
                 </th>
-                <th className="py-2 px-2 text-left font-semibold text-muted-foreground">
+                <th className="py-2 px-2 text-center font-semibold text-muted-foreground">
                   Team
                 </th>
-                <th className="py-2 px-2 text-left font-semibold text-muted-foreground hidden sm:table-cell">
+                <th className="py-2 px-2 text-center font-semibold text-muted-foreground hidden sm:table-cell">
                   Owner
                 </th>
-                <th className="py-2 pl-2 pr-4 text-right font-semibold text-muted-foreground">
+                <th className="py-2 px-2 text-center font-semibold text-muted-foreground">
                   Points
                 </th>
               </tr>
@@ -229,19 +229,19 @@ export default async function StandingsPage() {
                   key={team.teamName}
                   className={i % 2 === 0 ? "bg-card" : "bg-muted/30"}
                 >
-                  <td className="py-2.5 pl-4 pr-2">
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-mustard/15 text-sm font-bold text-mustard-dark">
+                  <td className="py-2.5 px-2 text-center">
+                    <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-mustard/15 text-sm font-bold text-mustard-dark">
                       {i + 1}
                     </span>
                   </td>
-                  <td className="py-2.5 px-2 font-medium text-foreground">
+                  <td className="py-2.5 px-2 text-center font-bold text-foreground">
                     {team.teamName}
                   </td>
-                  <td className="py-2.5 px-2 text-muted-foreground hidden sm:table-cell">
+                  <td className="py-2.5 px-2 text-center font-medium text-muted-foreground hidden sm:table-cell">
                     {team.ownerName}
                   </td>
-                  <td className="py-2.5 pl-2 pr-4 text-right font-semibold text-foreground tabular-nums">
-                    {team.totalPoints}
+                  <td className="py-2.5 px-2 text-center font-bold text-foreground font-mono">
+                    {team.totalPoints.toFixed(1)}
                   </td>
                 </tr>
               ))}
@@ -252,6 +252,9 @@ export default async function StandingsPage() {
 
       {/* Team Roster Cards */}
       <Section title="Team Rosters" delay={200}>
+        <p className="text-sm text-muted-foreground mb-4">
+          Hover over a chef&apos;s score (or tap on mobile) to see their episode-by-episode breakdown.
+        </p>
         <div className="grid gap-4 sm:grid-cols-2">
           {teams.map((team) => (
             <div
@@ -265,8 +268,8 @@ export default async function StandingsPage() {
                 </h3>
                 <p className="text-xs text-muted-foreground">
                   {team.ownerName} &middot;{" "}
-                  <span className="font-semibold text-foreground">
-                    {team.totalPoints} pts
+                  <span className="font-bold text-foreground font-mono">
+                    {team.totalPoints.toFixed(1)} pts
                   </span>
                 </p>
               </div>
@@ -277,7 +280,7 @@ export default async function StandingsPage() {
                     className="flex items-center justify-between py-2.5"
                   >
                     <div className="flex items-center gap-2.5">
-                      <span className="text-sm font-medium text-foreground">
+                      <span className="text-sm font-semibold text-foreground">
                         {chef.chefName}
                       </span>
                       <StatusBadge status={chef.status} />
@@ -305,7 +308,7 @@ export default async function StandingsPage() {
                 <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-mustard/15 text-xs font-bold text-mustard-dark">
                   {i + 1}
                 </span>
-                <span className="w-44 shrink-0 text-sm font-medium text-foreground truncate">
+                <span className="w-44 shrink-0 text-sm font-semibold text-foreground truncate">
                   {chef.chefName}
                 </span>
                 <StatusBadge status={chef.status} />
@@ -317,8 +320,8 @@ export default async function StandingsPage() {
                     />
                   </div>
                 </div>
-                <span className="w-10 text-right text-sm font-semibold text-foreground tabular-nums">
-                  {chef.points}
+                <span className="w-12 text-right text-sm font-bold text-foreground font-mono">
+                  {chef.points.toFixed(1)}
                 </span>
               </div>
             );

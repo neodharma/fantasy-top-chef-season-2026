@@ -7,7 +7,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-body), "Courier New", monospace;
   --font-mono: var(--font-geist-mono);
   --font-display: var(--font-display);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -134,7 +134,8 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground text-base;
+    @apply bg-background text-foreground;
+    font-size: 17px;
   }
   html {
     @apply font-sans;

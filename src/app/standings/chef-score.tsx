@@ -35,11 +35,11 @@ export function ChefScore({ points, episodes }: Props) {
     <>
       <span
         ref={ref}
-        className={`text-sm font-semibold text-foreground tabular-nums ${hasData ? "cursor-default underline decoration-dotted decoration-muted-foreground/40 underline-offset-2" : ""}`}
+        className={`text-sm font-bold text-foreground font-mono ${hasData ? "cursor-default underline decoration-dotted decoration-muted-foreground/40 underline-offset-2" : ""}`}
         onMouseEnter={hasData ? handleEnter : undefined}
         onMouseLeave={() => setShow(false)}
       >
-        {points}
+        {points.toFixed(1)}
       </span>
 
       {show && (

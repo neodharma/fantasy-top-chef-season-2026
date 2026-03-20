@@ -100,7 +100,7 @@ export async function submitEpisodeScores(
     .eq("episode", episode);
 
   if (deleteError) {
-    return { success: false, error: "Failed to clear existing episode data." };
+    return { success: false, error: `Failed to clear existing episode data: ${deleteError.message}` };
   }
 
   const rows = entries.map((e) => ({
@@ -114,7 +114,7 @@ export async function submitEpisodeScores(
     .insert(rows);
 
   if (insertError) {
-    return { success: false, error: "Failed to save episode scores." };
+    return { success: false, error: `Failed to save episode scores: ${insertError.message}` };
   }
 
   return { success: true, inserted: rows.length };

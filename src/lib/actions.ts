@@ -67,3 +67,55 @@ export async function submitDraft(
 
   return { success: true };
 }
+
+interface ScoreEntry {
+  chef_id: string;
+  event: string;
+}
+
+interface ScoreResult {
+  success: boolean;
+  error?: string;
+  inserted?: number;
+}
+
+export async function submitEpisodeScores(
+  episode: number,
+  entries: ScoreEntry[]
+): Promise<ScoreResult> {
+  if (episode < 1 || !Number.isInteger(episode)) {
+    return { success: false, error: "Episode must be a positive integer." };
+  }
+
+  if (entries.length === 0) {
+    return { success: false, error: "No events to submit." };
+  }
+
+  const supabase = getSupabase();
+
+  // Delete any existing results for this episode, then insert fresh
+  const { error: deleteError } = await supabase
+    .from("episode_results")
+    .delete()
+    .eq("episode", episode);
+
+  if (deleteError) {
+    return { success: false, error: "Failed to clear existing episode data." };
+  }
+
+  const rows = entries.map((e) => ({
+    episode,
+    chef_id: e.chef_id,
+    event: e.event,
+  }));
+
+  const { error: insertError } = await supabase
+    .from("episode_results")
+    .insert(rows);
+
+  if (insertError) {
+    return { success: false, error: "Failed to save episode scores." };
+  }
+
+  return { success: true, inserted: rows.length };
+}

@@ -246,7 +246,7 @@ export default async function EpisodesPage() {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-border/50">
-                <th className="py-2 pr-3 text-center font-semibold text-muted-foreground sticky left-0 bg-card">
+                <th className="py-2 pr-3 text-center font-semibold text-muted-foreground sticky left-0 bg-card z-10">
                   Chef
                 </th>
                 {episodes.map((ep) => (
@@ -270,7 +270,7 @@ export default async function EpisodesPage() {
                     key={chef.id}
                     className={i % 2 === 0 ? "bg-card" : "bg-muted/30"}
                   >
-                    <td className="py-2.5 pr-3 font-semibold text-foreground whitespace-nowrap sticky left-0 bg-inherit text-center">
+                    <td className={`py-2.5 pr-3 font-semibold text-foreground whitespace-nowrap sticky left-0 text-center ${i % 2 === 0 ? "bg-card" : "bg-secondary"}`}>
                       {chef.name}
                     </td>
                     {episodes.map((ep) => {

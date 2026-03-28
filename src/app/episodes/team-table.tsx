@@ -114,7 +114,7 @@ export function TeamTable({ rosters, episodes, teamEpData, teamTotals }: Props) 
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b border-border/50">
-            <th className="py-2 pr-3 text-center font-semibold text-muted-foreground sticky left-0 bg-card">
+            <th className="py-2 pr-3 text-center font-semibold text-muted-foreground sticky left-0 bg-card z-10">
               Team
             </th>
             {episodes.map((ep) => (
@@ -136,7 +136,7 @@ export function TeamTable({ rosters, episodes, teamEpData, teamTotals }: Props) 
               key={roster.teamName}
               className={i % 2 === 0 ? "bg-card" : "bg-muted/30"}
             >
-              <td className="py-2.5 pr-3 whitespace-nowrap sticky left-0 bg-inherit text-center">
+              <td className={`py-2.5 pr-3 whitespace-nowrap sticky left-0 text-center ${i % 2 === 0 ? "bg-card" : "bg-secondary"}`}>
                 <span className="font-bold text-foreground">
                   {roster.teamName}
                 </span>

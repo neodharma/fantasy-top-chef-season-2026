@@ -242,7 +242,7 @@ export default async function EpisodesPage() {
 
       {/* Chef Results Table */}
       <Section title="Chef Results by Episode" delay={100}>
-        <div className="overflow-x-auto -mx-6 px-6 sm:-mx-8 sm:px-8 overscroll-x-contain snap-x snap-proximity">
+        <div className="overflow-x-auto -mx-6 px-6 sm:-mx-8 sm:px-8 overscroll-x-contain">
           <table className="w-full text-xs sm:text-sm">
             <thead>
               <tr className="border-b border-border/50">
@@ -252,7 +252,7 @@ export default async function EpisodesPage() {
                 {episodes.map((ep) => (
                   <th
                     key={ep}
-                    className="py-1.5 px-2 sm:py-2 sm:px-3 text-center font-semibold text-muted-foreground min-w-[76px] sm:min-w-[100px] border-l border-border/30 snap-start"
+                    className="py-1.5 px-2 sm:py-2 sm:px-3 text-center font-semibold text-muted-foreground min-w-[76px] sm:min-w-[100px] border-l border-border/30"
                   >
                     Ep {ep}
                   </th>

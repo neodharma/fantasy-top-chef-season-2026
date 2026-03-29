@@ -4,10 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links = [
-  { href: "/results", label: "Draft Results" },
   { href: "/standings", label: "Standings" },
   { href: "/episodes", label: "Episodes" },
   { href: "/scoring", label: "Scoring" },
+  { href: "/results", label: "Draft Results" },
 ];
 
 export function Nav() {
@@ -17,7 +17,7 @@ export function Nav() {
     <nav className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-3xl items-center justify-between px-5 py-3">
         <Link
-          href="/results"
+          href="/standings"
           className="font-display text-base font-bold tracking-tight text-foreground"
         >
           Fantasy Top Chef

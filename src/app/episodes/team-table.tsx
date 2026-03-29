@@ -27,7 +27,7 @@ function PointsCell({ cell }: { cell: EpCell | undefined }) {
 
   if (!cell) {
     return (
-      <td className="py-2.5 px-3 text-center text-muted-foreground/40 border-l border-border/30">
+      <td className="py-2 px-2 sm:py-2.5 sm:px-3 text-center text-muted-foreground/40 border-l border-border/30">
         &mdash;
       </td>
     );
@@ -52,7 +52,7 @@ function PointsCell({ cell }: { cell: EpCell | undefined }) {
   };
 
   return (
-    <td className="py-2.5 px-3 text-center border-l border-border/30">
+    <td className="py-2 px-2 sm:py-2.5 sm:px-3 text-center border-l border-border/30">
       <span
         ref={ref}
         className={`font-bold font-mono cursor-default ${color}`}
@@ -110,22 +110,22 @@ function PointsCell({ cell }: { cell: EpCell | undefined }) {
 
 export function TeamTable({ rosters, episodes, teamEpData, teamTotals }: Props) {
   return (
-    <div className="overflow-x-auto -mx-6 px-6 sm:-mx-8 sm:px-8">
-      <table className="w-full text-sm">
+    <div className="overflow-x-auto -mx-6 px-6 sm:-mx-8 sm:px-8 overscroll-x-contain snap-x snap-proximity">
+      <table className="w-full text-xs sm:text-sm">
         <thead>
           <tr className="border-b border-border/50">
-            <th className="py-2 pr-3 text-center font-semibold text-muted-foreground sticky left-0 bg-card z-10">
+            <th className="py-1.5 pr-2 sm:py-2 sm:pr-3 text-center font-semibold text-muted-foreground sticky left-0 bg-card z-10">
               Team
             </th>
             {episodes.map((ep) => (
               <th
                 key={ep}
-                className="py-2 px-3 text-center font-semibold text-muted-foreground border-l border-border/30"
+                className="py-1.5 px-2 sm:py-2 sm:px-3 text-center font-semibold text-muted-foreground border-l border-border/30 snap-start"
               >
                 Ep {ep}
               </th>
             ))}
-            <th className="py-2 pl-3 text-center font-semibold text-muted-foreground border-l border-border/30">
+            <th className="py-1.5 pl-2 sm:py-2 sm:pl-3 text-center font-semibold text-muted-foreground border-l border-border/30">
               Total
             </th>
           </tr>
@@ -136,7 +136,7 @@ export function TeamTable({ rosters, episodes, teamEpData, teamTotals }: Props) 
               key={roster.teamName}
               className={i % 2 === 0 ? "bg-card" : "bg-muted/30"}
             >
-              <td className={`py-2.5 pr-3 whitespace-nowrap sticky left-0 text-center ${i % 2 === 0 ? "bg-card" : "bg-secondary"}`}>
+              <td className={`py-2 pr-2 sm:py-2.5 sm:pr-3 whitespace-nowrap sticky left-0 text-center ${i % 2 === 0 ? "bg-card" : "bg-secondary"}`}>
                 <span className="font-bold text-foreground">
                   {roster.teamName}
                 </span>
@@ -150,7 +150,7 @@ export function TeamTable({ rosters, episodes, teamEpData, teamTotals }: Props) 
                   cell={teamEpData[roster.teamName]?.[ep]}
                 />
               ))}
-              <td className="py-2.5 pl-3 text-center font-bold text-foreground font-mono border-l border-border/30">
+              <td className="py-2 pl-2 sm:py-2.5 sm:pl-3 text-center font-bold text-foreground font-mono border-l border-border/30">
                 {(teamTotals[roster.teamName] ?? 0).toFixed(1)}
               </td>
             </tr>

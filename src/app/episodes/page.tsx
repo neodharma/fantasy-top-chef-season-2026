@@ -242,22 +242,22 @@ export default async function EpisodesPage() {
 
       {/* Chef Results Table */}
       <Section title="Chef Results by Episode" delay={100}>
-        <div className="overflow-x-auto -mx-6 px-6 sm:-mx-8 sm:px-8">
-          <table className="w-full text-sm">
+        <div className="overflow-x-auto -mx-6 px-6 sm:-mx-8 sm:px-8 overscroll-x-contain snap-x snap-proximity">
+          <table className="w-full text-xs sm:text-sm">
             <thead>
               <tr className="border-b border-border/50">
-                <th className="py-2 pr-3 text-center font-semibold text-muted-foreground sticky left-0 bg-card z-10">
+                <th className="py-1.5 pr-2 sm:py-2 sm:pr-3 text-center font-semibold text-muted-foreground sticky left-0 bg-card z-10">
                   Chef
                 </th>
                 {episodes.map((ep) => (
                   <th
                     key={ep}
-                    className="py-2 px-3 text-center font-semibold text-muted-foreground min-w-[100px] border-l border-border/30"
+                    className="py-1.5 px-2 sm:py-2 sm:px-3 text-center font-semibold text-muted-foreground min-w-[76px] sm:min-w-[100px] border-l border-border/30 snap-start"
                   >
                     Ep {ep}
                   </th>
                 ))}
-                <th className="py-2 pl-3 text-center font-semibold text-muted-foreground border-l border-border/30">
+                <th className="py-1.5 pl-2 sm:py-2 sm:pl-3 text-center font-semibold text-muted-foreground border-l border-border/30">
                   Total
                 </th>
               </tr>
@@ -270,7 +270,7 @@ export default async function EpisodesPage() {
                     key={chef.id}
                     className={i % 2 === 0 ? "bg-card" : "bg-muted/30"}
                   >
-                    <td className={`py-2.5 pr-3 font-semibold text-foreground whitespace-nowrap sticky left-0 text-center ${i % 2 === 0 ? "bg-card" : "bg-secondary"}`}>
+                    <td className={`py-2 pr-2 sm:py-2.5 sm:pr-3 font-semibold text-foreground whitespace-nowrap sticky left-0 text-center ${i % 2 === 0 ? "bg-card" : "bg-secondary"}`}>
                       {chef.name}
                     </td>
                     {episodes.map((ep) => {
@@ -279,14 +279,14 @@ export default async function EpisodesPage() {
                         return (
                           <td
                             key={ep}
-                            className="py-2.5 px-3 text-center text-muted-foreground/40 border-l border-border/30"
+                            className="py-2 px-2 sm:py-2.5 sm:px-3 text-center text-muted-foreground/40 border-l border-border/30"
                           >
                             &mdash;
                           </td>
                         );
                       }
                       return (
-                        <td key={ep} className="py-2.5 px-3 border-l border-border/30">
+                        <td key={ep} className="py-2 px-2 sm:py-2.5 sm:px-3 border-l border-border/30">
                           <div className="flex flex-wrap justify-center gap-1">
                             {events.map((e) => (
                               <EventBadge key={e.event} event={e.event} />
@@ -295,7 +295,7 @@ export default async function EpisodesPage() {
                         </td>
                       );
                     })}
-                    <td className="py-2.5 pl-3 text-center font-bold text-foreground font-mono border-l border-border/30">
+                    <td className="py-2 pl-2 sm:py-2.5 sm:pl-3 text-center font-bold text-foreground font-mono border-l border-border/30">
                       {chef.total.toFixed(1)}
                     </td>
                   </tr>

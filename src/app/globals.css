@@ -135,7 +135,12 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-size: 17px;
+    font-size: 15px;
+  }
+  @media (min-width: 640px) {
+    body {
+      font-size: 17px;
+    }
   }
   html {
     @apply font-sans;

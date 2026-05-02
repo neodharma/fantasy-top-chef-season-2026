@@ -1,4 +1,5 @@
 import draftResults from "./draft-results.json";
+import redraftResults from "./redraft-results.json";
 import distributionChart from "./draft-distribution.png";
 import fairnessScatter from "./draft-fairness-scatter.png";
 
@@ -16,6 +17,26 @@ interface Roster {
   ownerName: string;
   picks: Pick[];
   avgRank: number;
+}
+
+interface RedraftPick extends Pick {
+  kept?: boolean;
+}
+
+interface RedraftRoster {
+  teamName: string;
+  ownerName: string;
+  keepChefId: string | null;
+  picks: RedraftPick[];
+}
+
+interface RedraftData {
+  effectiveFromEpisode: number | null;
+  draftOrder: { teamName: string; ownerName: string }[];
+  picks: Pick[];
+  rosters: RedraftRoster[];
+  chefPopularity: ChefPopularity[];
+  numTeams: number;
 }
 
 interface ChefPopularity {
@@ -40,6 +61,10 @@ const data = draftResults as {
   undrafted: { id: string; name: string }[];
   numTeams: number;
 };
+
+const redraft = redraftResults as RedraftData;
+const hasRedraft =
+  redraft.effectiveFromEpisode !== null && redraft.rosters.length > 0;
 
 function RankBadge({ rank }: { rank: number }) {
   const bg =
@@ -113,8 +138,74 @@ export default function ResultsPage() {
         </p>
       </div>
 
+      {hasRedraft && (
+        <>
+          <Section title={`Redraft Rosters (eps ${redraft.effectiveFromEpisode}+)`} delay={50}>
+            <p className="text-sm text-muted-foreground mb-4">
+              Mid-season redraft from the surviving chefs. Each team optionally kept
+              one Active chef; the rest of each roster was filled via reverse-standings
+              snake draft (max 4 teams per chef).
+            </p>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {redraft.rosters.map((roster) => (
+                <div
+                  key={roster.teamName}
+                  className="rounded-xl border border-border/60 bg-card shadow-lg shadow-black/[0.06] overflow-hidden"
+                >
+                  <div className="relative border-b border-border/50 bg-gradient-to-b from-mustard/[0.06] to-transparent px-5 py-3">
+                    <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-mustard/60 to-transparent" />
+                    <h3 className="font-display text-base font-bold text-foreground truncate">
+                      {roster.teamName}
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      {roster.ownerName}
+                    </p>
+                  </div>
+                  <ul className="divide-y divide-border/40 px-5">
+                    {roster.picks.map((pick) => (
+                      <li
+                        key={pick.chef_id}
+                        className="flex items-center justify-between py-2.5"
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <span className="text-xs font-medium text-muted-foreground w-6">
+                            {pick.kept ? "Keep" : `R${pick.round_num}`}
+                          </span>
+                          <span className="text-sm font-medium text-foreground">
+                            {pick.chef_name}
+                          </span>
+                        </div>
+                        {!pick.kept && <RankBadge rank={pick.rank_on_list} />}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </Section>
+
+          <Section title="Redraft Order (worst-first)" delay={75}>
+            <ol className="space-y-1">
+              {redraft.draftOrder.map((team, i) => (
+                <li key={i} className="flex items-center gap-3 py-1.5">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-mustard/15 text-sm font-bold text-mustard-dark">
+                    {i + 1}
+                  </span>
+                  <span className="font-semibold text-foreground">
+                    {team.teamName}
+                  </span>
+                  <span className="text-muted-foreground text-sm">
+                    {team.ownerName}
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </Section>
+        </>
+      )}
+
       {/* Team Rosters */}
-      <Section title="Team Rosters" delay={100}>
+      <Section title="Original Team Rosters" delay={100}>
         <div className="grid gap-4 sm:grid-cols-2">
           {data.rosters.map((roster) => (
             <div

@@ -7,7 +7,7 @@ const links = [
   { href: "/standings", label: "Standings" },
   { href: "/episodes", label: "Episodes" },
   { href: "/scoring", label: "Scoring" },
-  { href: "/results", label: "Draft Results" },
+  { href: "/redraft", label: "Redraft" },
 ];
 
 export function Nav() {

@@ -8,11 +8,12 @@ import {
   deriveChefStatus,
   type EpisodeResult,
   type ChefStanding,
-  type TeamStanding,
   type ChefStatus,
 } from "@/lib/scoring";
 import draftResults from "../results/draft-results.json";
-import { ChefScore, type EpisodeBreakdown } from "./chef-score";
+import redraftResults from "../results/redraft-results.json";
+import { type EpisodeBreakdown } from "./chef-score";
+import { TeamRosterCard, type TeamCardChef } from "./team-roster-card";
 
 const EVENT_LABELS: Record<string, string> = {
   quickfire_win: "QF Win",
@@ -24,6 +25,7 @@ const EVENT_LABELS: Record<string, string> = {
   lck_win: "LCK Win",
   sent_to_lck: "Sent to LCK",
   eliminated: "Eliminated",
+  returned_to_competition: "Returned to Comp",
   bonus_risotto: "Risotto",
   bonus_cries: "Cries",
   bonus_incomplete_plate: "Incomplete Plate",
@@ -31,21 +33,48 @@ const EVENT_LABELS: Record<string, string> = {
   bonus_liquid_nitrogen: "Liquid Nitrogen",
 };
 
-interface Roster {
+interface OriginalRoster {
   teamName: string;
   ownerName: string;
   picks: { chef_id: string; chef_name: string }[];
 }
 
-const data = draftResults as { rosters: Roster[] };
+interface RedraftRosterPick {
+  chef_id: string;
+  chef_name: string;
+  kept?: boolean;
+}
 
-const chefNameMap = Object.fromEntries(chefs.map((c) => [c.id, c.name]));
+interface RedraftRoster {
+  teamName: string;
+  ownerName: string;
+  keepChefId: string | null;
+  picks: RedraftRosterPick[];
+}
+
+const draft = draftResults as { rosters: OriginalRoster[] };
+const redraft = redraftResults as {
+  effectiveFromEpisode: number | null;
+  rosters: RedraftRoster[];
+};
+
+const hasRedraft =
+  redraft.effectiveFromEpisode !== null && redraft.rosters.length > 0;
+
+interface TeamRow {
+  teamName: string;
+  ownerName: string;
+  totalPoints: number;
+  originalChefs: TeamCardChef[];
+  originalSubtotal: number;
+  redraftChefs: TeamCardChef[] | null;
+  redraftSubtotal: number;
+}
 
 async function loadStandings(): Promise<{
-  teams: TeamStanding[];
+  teams: TeamRow[];
   allChefs: ChefStanding[];
   maxEpisode: number;
-  chefBreakdowns: Record<string, EpisodeBreakdown[]>;
 }> {
   const supabase = getSupabase();
   const { data: rows } = await supabase
@@ -56,7 +85,6 @@ async function loadStandings(): Promise<{
   const results = (rows ?? []) as EpisodeResult[];
   const maxEpisode = results.reduce((m, r) => Math.max(m, r.episode), 0);
 
-  // Group results by chef
   const byChef = new Map<string, EpisodeResult[]>();
   for (const r of results) {
     const arr = byChef.get(r.chef_id) ?? [];
@@ -64,28 +92,6 @@ async function loadStandings(): Promise<{
     byChef.set(r.chef_id, arr);
   }
 
-  // Build per-chef episode breakdowns for tooltips
-  const chefBreakdowns: Record<string, EpisodeBreakdown[]> = {};
-  for (const [chefId, events] of byChef) {
-    const byEp = new Map<number, EpisodeResult[]>();
-    for (const e of events) {
-      const arr = byEp.get(e.episode) ?? [];
-      arr.push(e);
-      byEp.set(e.episode, arr);
-    }
-    chefBreakdowns[chefId] = [...byEp.entries()]
-      .sort(([a], [b]) => a - b)
-      .map(([episode, epEvents]) => ({
-        episode,
-        events: epEvents.map((e) => ({
-          label: EVENT_LABELS[e.event] ?? e.event,
-          points: POINT_VALUES[e.event],
-        })),
-        total: epEvents.reduce((s, e) => s + POINT_VALUES[e.event], 0),
-      }));
-  }
-
-  // Build chef standings for all 15 chefs
   const allChefs: ChefStanding[] = chefs.map((c) => {
     const events = byChef.get(c.id) ?? [];
     return {
@@ -95,31 +101,98 @@ async function loadStandings(): Promise<{
       status: deriveChefStatus(events),
     };
   });
+  const chefStatusById = new Map(allChefs.map((c) => [c.chefId, c.status]));
 
-  // Build team standings
-  const teams: TeamStanding[] = data.rosters.map((roster) => {
-    const teamChefs: ChefStanding[] = roster.picks.map((pick) => {
-      return (
-        allChefs.find((c) => c.chefId === pick.chef_id) ?? {
-          chefId: pick.chef_id,
-          chefName: pick.chef_name,
-          points: 0,
-          status: "Active" as ChefStatus,
-        }
-      );
-    });
+  const phaseSplit = hasRedraft ? redraft.effectiveFromEpisode! : Infinity;
+
+  const buildBreakdown = (
+    events: EpisodeResult[],
+    epFilter: (ep: number) => boolean
+  ): { points: number; episodes: EpisodeBreakdown[] } => {
+    const filtered = events.filter((e) => epFilter(e.episode));
+    const byEp = new Map<number, EpisodeResult[]>();
+    for (const e of filtered) {
+      const arr = byEp.get(e.episode) ?? [];
+      arr.push(e);
+      byEp.set(e.episode, arr);
+    }
+    const episodes: EpisodeBreakdown[] = [...byEp.entries()]
+      .sort(([a], [b]) => a - b)
+      .map(([episode, epEvents]) => ({
+        episode,
+        events: epEvents.map((e) => ({
+          label: EVENT_LABELS[e.event] ?? e.event,
+          points: POINT_VALUES[e.event],
+        })),
+        total: epEvents.reduce((s, e) => s + POINT_VALUES[e.event], 0),
+      }));
+    return {
+      points: filtered.reduce((s, e) => s + POINT_VALUES[e.event], 0),
+      episodes,
+    };
+  };
+
+  const buildChefRow = (
+    chefId: string,
+    chefName: string,
+    epFilter: (ep: number) => boolean,
+    kept = false
+  ): TeamCardChef => {
+    const { points, episodes } = buildBreakdown(
+      byChef.get(chefId) ?? [],
+      epFilter
+    );
+    return {
+      chefId,
+      chefName,
+      status: chefStatusById.get(chefId) ?? "Active",
+      points,
+      episodes,
+      kept,
+    };
+  };
+
+  const inOriginalPhase = (ep: number) => ep < phaseSplit;
+  const inRedraftPhase = (ep: number) => ep >= phaseSplit;
+
+  const redraftByTeam = new Map<string, RedraftRoster>();
+  for (const r of redraft.rosters) redraftByTeam.set(r.teamName, r);
+
+  const teams: TeamRow[] = draft.rosters.map((roster) => {
+    const originalChefs = roster.picks.map((p) =>
+      buildChefRow(p.chef_id, p.chef_name, inOriginalPhase)
+    );
+    const originalSubtotal = originalChefs.reduce((s, c) => s + c.points, 0);
+
+    let redraftChefs: TeamCardChef[] | null = null;
+    let redraftSubtotal = 0;
+    if (hasRedraft) {
+      const r = redraftByTeam.get(roster.teamName);
+      if (r) {
+        redraftChefs = r.picks.map((p) =>
+          buildChefRow(p.chef_id, p.chef_name, inRedraftPhase, p.kept)
+        );
+        redraftSubtotal = redraftChefs.reduce((s, c) => s + c.points, 0);
+      } else {
+        redraftChefs = [];
+      }
+    }
+
     return {
       teamName: roster.teamName,
       ownerName: roster.ownerName,
-      totalPoints: teamChefs.reduce((s, c) => s + c.points, 0),
-      chefs: teamChefs,
+      totalPoints: originalSubtotal + redraftSubtotal,
+      originalChefs,
+      originalSubtotal,
+      redraftChefs,
+      redraftSubtotal,
     };
   });
 
   teams.sort((a, b) => b.totalPoints - a.totalPoints);
   allChefs.sort((a, b) => b.points - a.points);
 
-  return { teams, allChefs, maxEpisode, chefBreakdowns };
+  return { teams, allChefs, maxEpisode };
 }
 
 function StatusBadge({ status }: { status: ChefStatus }) {
@@ -163,16 +236,14 @@ function Section({
 }
 
 export default async function StandingsPage() {
-  const { teams, allChefs, maxEpisode, chefBreakdowns } = await loadStandings();
+  const { teams, allChefs, maxEpisode } = await loadStandings();
 
   const maxChefPts = Math.max(...allChefs.map((c) => c.points), 1);
 
   return (
     <main className="relative mx-auto max-w-3xl px-5 py-16 sm:py-24">
-      {/* Decorative top accent */}
       <div className="pointer-events-none absolute left-1/2 top-0 h-px w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-mustard/40 to-transparent" />
 
-      {/* Header */}
       <div className="mb-14 text-center animate-fade-in">
         <h1 className="font-display text-5xl font-extrabold tracking-tight sm:text-6xl text-foreground">
           Stand
@@ -184,7 +255,6 @@ export default async function StandingsPage() {
             : "No episodes scored yet"}
         </p>
 
-        {/* Decorative divider */}
         <div className="mx-auto mt-6 flex items-center justify-center gap-3">
           <div className="h-px w-12 bg-mustard/40" />
           <svg
@@ -203,7 +273,6 @@ export default async function StandingsPage() {
         </div>
       </div>
 
-      {/* Team Standings Table */}
       <Section title="Team Standings" delay={100}>
         <div className="rounded-lg border border-border/50 overflow-hidden">
           <table className="w-full text-sm">
@@ -250,54 +319,27 @@ export default async function StandingsPage() {
         </div>
       </Section>
 
-      {/* Team Roster Cards */}
       <Section title="Team Rosters" delay={200}>
         <p className="text-sm text-muted-foreground mb-4">
           Hover over a chef&apos;s score (or tap on mobile) to see their episode-by-episode breakdown.
+          {hasRedraft && " Toggle each card between the redraft and original-draft rosters."}
         </p>
         <div className="grid gap-4 sm:grid-cols-2">
           {teams.map((team) => (
-            <div
+            <TeamRosterCard
               key={team.teamName}
-              className="rounded-xl border border-border/60 bg-card shadow-lg shadow-black/[0.06] overflow-hidden"
-            >
-              <div className="relative border-b border-border/50 bg-gradient-to-b from-mustard/[0.06] to-transparent px-5 py-3">
-                <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-mustard/60 to-transparent" />
-                <h3 className="font-display text-base font-bold text-foreground truncate">
-                  {team.teamName}
-                </h3>
-                <p className="text-xs text-muted-foreground">
-                  {team.ownerName} &middot;{" "}
-                  <span className="font-bold text-foreground font-mono">
-                    {team.totalPoints.toFixed(1)} pts
-                  </span>
-                </p>
-              </div>
-              <ul className="divide-y divide-border/40 px-5">
-                {team.chefs.map((chef) => (
-                  <li
-                    key={chef.chefId}
-                    className="flex items-center justify-between py-2.5"
-                  >
-                    <div className="flex items-center gap-2.5">
-                      <span className="text-sm font-semibold text-foreground">
-                        {chef.chefName}
-                      </span>
-                      <StatusBadge status={chef.status} />
-                    </div>
-                    <ChefScore
-                      points={chef.points}
-                      episodes={chefBreakdowns[chef.chefId] ?? []}
-                    />
-                  </li>
-                ))}
-              </ul>
-            </div>
+              teamName={team.teamName}
+              ownerName={team.ownerName}
+              totalPoints={team.totalPoints}
+              originalChefs={team.originalChefs}
+              originalSubtotal={team.originalSubtotal}
+              redraftChefs={team.redraftChefs}
+              redraftSubtotal={team.redraftSubtotal}
+            />
           ))}
         </div>
       </Section>
 
-      {/* Chef Leaderboard */}
       <Section title="Chef Leaderboard" delay={300}>
         <div className="space-y-2">
           {allChefs.map((chef, i) => {
@@ -329,7 +371,6 @@ export default async function StandingsPage() {
         </div>
       </Section>
 
-      {/* Footer flourish */}
       <div
         className="mt-16 flex items-center justify-center gap-2 text-sm text-muted-foreground/50 animate-fade-in"
         style={{ animationDelay: "400ms" }}

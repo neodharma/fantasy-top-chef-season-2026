@@ -119,3 +119,18 @@ export async function submitEpisodeScores(
 
   return { success: true, inserted: rows.length };
 }
+
+export async function getEpisodeScores(
+  episode: number
+): Promise<{ chef_id: string; event: string }[]> {
+  if (!Number.isInteger(episode) || episode < 1) return [];
+
+  const supabase = getSupabase();
+  const { data, error } = await supabase
+    .from("episode_results")
+    .select("chef_id, event")
+    .eq("episode", episode);
+
+  if (error) return [];
+  return data ?? [];
+}

@@ -40,6 +40,7 @@ CATEGORIES = [
     ("lck_win", "LCK Winner(s)"),
     ("sent_to_lck", "Sent to LCK"),
     ("eliminated", "Eliminated (out of competition)"),
+    ("returned_to_competition", "Returned to Competition"),
 ]
 
 

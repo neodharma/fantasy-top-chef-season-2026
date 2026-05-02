@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { chefs } from "@/lib/chefs";
 import { POINT_VALUES, type EventType } from "@/lib/scoring";
-import { submitEpisodeScores } from "@/lib/actions";
+import { getEpisodeScores, submitEpisodeScores } from "@/lib/actions";
 
 const ALL_EVENTS: { event: EventType; label: string; group: string }[] = [
   { event: "quickfire_win", label: "QF Win", group: "Quickfire" },
@@ -15,6 +15,7 @@ const ALL_EVENTS: { event: EventType; label: string; group: string }[] = [
   { event: "lck_win", label: "LCK Win", group: "LCK" },
   { event: "sent_to_lck", label: "Sent to LCK", group: "Status" },
   { event: "eliminated", label: "Eliminated", group: "Status" },
+  { event: "returned_to_competition", label: "Returned to Comp", group: "Status" },
   { event: "bonus_risotto", label: "Risotto", group: "Bonus" },
   { event: "bonus_cries", label: "Cries", group: "Bonus" },
   { event: "bonus_incomplete_plate", label: "Incomplete Plate", group: "Bonus" },
@@ -39,10 +40,32 @@ export default function AdminScorePage() {
   const [episode, setEpisode] = useState(1);
   const [checks, setChecks] = useState<CheckState>(buildInitialState);
   const [submitting, setSubmitting] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<{
     type: "success" | "error";
     message: string;
   } | null>(null);
+
+  useEffect(() => {
+    if (!Number.isInteger(episode) || episode < 1) return;
+    let ignore = false;
+    setLoading(true);
+    setResult(null);
+    getEpisodeScores(episode).then((rows) => {
+      if (ignore) return;
+      const next = buildInitialState();
+      for (const row of rows) {
+        if (next[row.chef_id] && row.event in next[row.chef_id]) {
+          next[row.chef_id][row.event as EventType] = true;
+        }
+      }
+      setChecks(next);
+      setLoading(false);
+    });
+    return () => {
+      ignore = true;
+    };
+  }, [episode]);
 
   function toggle(chefId: string, event: EventType) {
     setChecks((prev) => ({
@@ -121,6 +144,9 @@ export default function AdminScorePage() {
         >
           Clear All
         </button>
+        {loading && (
+          <span className="text-xs text-muted-foreground">Loading…</span>
+        )}
       </div>
 
       {/* Scoring grid */}

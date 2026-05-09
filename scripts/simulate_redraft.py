@@ -230,10 +230,43 @@ def run_redraft(teams: list[Team], standings: dict[str, float]) -> list[RedraftP
     return log
 
 
+def compute_desirability(teams: list[Team]) -> list[dict]:
+    """Average submitted rank per chef. Treat a team's kept chef as rank 1.
+
+    Must be called BEFORE run_redraft, which mutates Team.rankings.
+    """
+    rank_sum: dict[str, float] = {}
+    rank_count: dict[str, int] = {}
+    keeps: dict[str, int] = {}
+    for t in teams:
+        if t.keep_chef_id:
+            keeps[t.keep_chef_id] = keeps.get(t.keep_chef_id, 0) + 1
+            rank_sum[t.keep_chef_id] = rank_sum.get(t.keep_chef_id, 0) + 1
+            rank_count[t.keep_chef_id] = rank_count.get(t.keep_chef_id, 0) + 1
+        for cid, rank in t.rankings.items():
+            rank_sum[cid] = rank_sum.get(cid, 0) + rank
+            rank_count[cid] = rank_count.get(cid, 0) + 1
+
+    rows = []
+    for cid in rank_sum:
+        rows.append(
+            {
+                "chefId": cid,
+                "chefName": CHEFS.get(cid, cid),
+                "avgRank": round(rank_sum[cid] / rank_count[cid], 2),
+                "numKept": keeps.get(cid, 0),
+                "numTeams": rank_count[cid],
+            }
+        )
+    rows.sort(key=lambda r: r["avgRank"])
+    return rows
+
+
 def build_json(
     teams: list[Team],
     log: list[RedraftPick],
     standings: dict[str, float],
+    desirability: list[dict],
 ) -> dict:
     teams_sorted = sorted(teams, key=lambda t: standings.get(t.team_name, 0.0))
 
@@ -276,6 +309,15 @@ def build_json(
             {"teamName": t.team_name, "ownerName": t.owner_name}
             for t in teams_sorted
         ],
+        "standingsAtRedraft": [
+            {
+                "teamName": t.team_name,
+                "ownerName": t.owner_name,
+                "points": standings.get(t.team_name, 0.0),
+            }
+            for t in teams_sorted
+        ],
+        "chefDesirability": desirability,
         "picks": [asdict(p) for p in log],
         "rosters": rosters_out,
         "chefPopularity": [
@@ -356,8 +398,9 @@ def main() -> None:
         print(f"  {pts:6.1f}  {name}")
     print()
 
+    desirability = compute_desirability(teams)
     log = run_redraft(teams, standings)
-    payload = build_json(teams, log, standings)
+    payload = build_json(teams, log, standings, desirability)
     print_results(payload)
 
     if args.output:
